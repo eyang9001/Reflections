@@ -160,14 +160,14 @@ def who_is_it(image, database, model):
     
     min_dist = 100
     identity = None
-    
+    os.system('clear')
     # Loop over the database dictionary's names and encodings.
     for (name, db_encs) in database.items():
         
         # Compute L2 distance between the target "encoding" and the current "emb" from the database.
         dists = [np.linalg.norm(db_enc - encoding) for db_enc in db_encs]
         dist = np.mean(dists)
-#        # print('distance for %s is %s' %(name, dist))
+        print('%s: %s' %(name[0], 1-dist))
 
         # If this distance is less than the min_dist, then set min_dist to dist, and identity to name
         if dist < min_dist:
@@ -196,14 +196,14 @@ def welcome_users(identities):
         print('Today\'s Meds:')
         print('\tTake 200mg of Orilissa at: 10am, 4pm')
         say('Remember to take two hundred miligrams of Orilissa at ten a m and at four p m today.')
-        time.sleep(1)
+
 
         # Appointments
         print('\n')
         print('Today\'s Appointments:')
         print('\t3:00 p.m. with Dr. Eddo')
         say('You have an appointment with doctor Eddo at three p m')
-        time.sleep(1)
+
 
         # Refills
         print('\n')
@@ -217,14 +217,14 @@ def welcome_users(identities):
         print('\tTake one 150mg injection of Skyrizi in the am')
         print('\tTake three Mavyret pills with your meals')
         say('Remember to take a hundred fifty milligram injection of skyrizi this morning And a Mavyret pill with each meal')
-        time.sleep(1)
+
 
         # Appointments
         print('\n')
         print('Today\'s Appointments:')
         print('\t11:30 a.m. with Dr. Bone')
         say('You have an appointment with doctor Bone at eleven thirty a m')
-        time.sleep(1)
+
 
         # Refills
         print('\n')
@@ -233,7 +233,7 @@ def welcome_users(identities):
         say('Remember to go to the pharmacy to refill your Mavyret')
 
 
-    time.sleep(2)
+    time.sleep(1)
     if identities[0] == 'Abbi':
         prompt = 'On a scale from one to ten what level of pain are your uterine fibers today?'
     elif identities[0] == 'Vinny':
@@ -242,7 +242,8 @@ def welcome_users(identities):
     # Ask question
     say(prompt)
 #    # Allow the program to start detecting identities again
-    time.sleep(10)
+    time.sleep(2)
+    os.system('clear')
     ready_to_detect_identity = True
 
 if __name__ == "__main__":
